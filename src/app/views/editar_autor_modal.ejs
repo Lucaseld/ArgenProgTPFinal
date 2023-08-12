@@ -1,0 +1,39 @@
+<!-- editar_autor_modal.ejs -->
+
+<!-- Modal -->
+<div class="modal fade" id="editarModal<%= autor.id_autor %>" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarModalLabel">Editar Autor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/editar_autor/<%= autor.id_autor %>" method="post">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" value="<%= autor.nombre %>" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" name="apellido" value="<%= autor.apellido %>" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="nacionalidadId">Nacionalidad</label>
+                        <select name="nacionalidadId" class="form-control">
+                            <% nacionalidades.forEach(nacionalidad => { %>
+                                <option value="<%= nacionalidad.id_nacionalidad %>" <% if (nacionalidad.id_nacionalidad === autor.id_nacionalidad) { %> selected <% } %>><%= nacionalidad.nombre %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

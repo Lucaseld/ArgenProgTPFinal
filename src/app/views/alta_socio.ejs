@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="/" class="navbar-brand mx-auto">Socios</a>
+        <a href="/carga" class="navbar-brand mx-auto ">Carga Inicial</a>
+        <a href="/generos" class="navbar-brand mx-auto ">Generos</a>
+        <a href="/categorias" class="navbar-brand mx-auto ">Categorias</a>
+        <a href="/nacionalidades" class="navbar-brand mx-auto ">Nacionalidades</a>
+        <a href="/autores" class="navbar-brand mx-auto ">Autores</a>
+    </nav>
+    <div class="container ">
+        <div class="col-md-6 mt-4 card">
+            <form action="/socios" method="post" class="card-body">
+                <h3 class="card-title">Agregar Socios</h3>
+                <div class="form-group mt-1">
+                    <p>Nombre</p>
+                    <input type="text" name="nombre" class="form-control">
+                </div>
+                <div class="form-group mt-1">
+                    <p>Apellido</p>
+                    <input type="text" name="apellido" class="form-control">
+                </div>
+                <div class="form-group mt-1">
+                    <p>Fecha de Nacimiento</p>
+                    <% var fecha = new Date(Date.now());
+                       y = fecha.getFullYear();
+                       m = fecha.getMonth()+1;
+                       d = fecha.getDate();
+                       m = m < 10 ? "0" + m : m;
+                       d = d < 10 ? "0" + d : d;
+                       var now = y+"-"+m+"-"+d
+                     %>
+                    <input type="date" name="fecha_nacimiento" class="form-control" value='<%= now %>'>
+                </div>
+                <div>
+                    <label for="generoId">Genero: </label>
+                    <select name="generoId">
+                        <% generos.forEach(generos=> { %>
+                            <option value="<%= generos.id_genero %>"><%= generos.genero %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="form-group mt-1">
+                    <p>DNI</p>
+                    <input type="text" name="dni" class="form-control">
+                </div>
+                <div class="form-group mt-1">
+                    <p>Direccion</p>
+                    <input type="text" name="direccion" class="form-control">
+                </div>
+                <div class="form-group mt-1">
+                    <p>Localidad</p>
+                    <input type="text" name="localidad" class="form-control">
+                </div>
+                <div>
+                    <label for="provinciaId">Provincia: </label>
+                    <select name="provinciaId">
+                        <% provincias.forEach(provincias=> { %>
+                            <option value="<%= provincias.id_provincia %>"><%= provincias.nombre %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="form-group mt-1">
+                    <p>Telefono</p>
+                    <input type="text" name="telefono" class="form-control">
+                </div>
+                <div class="form-group mt-1">
+                    <p>Email</p>
+                    <input type="text" name="email" class="form-control">
+                </div>
+                <div>
+                    <label for="categoriaId">Categoria: </label>
+                    <select name="categoriaId">
+                        <% categorias.forEach(categorias=> { %>
+                            <option value="<%= categorias.id_categoria %>"><%= categorias.nombre %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-primary my-1" value="Guardar">
+            </form>
+        </div>
+    </div>
+
+</body>
+
+
+</html>

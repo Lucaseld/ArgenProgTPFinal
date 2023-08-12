@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="/" class="navbar-brand mx-auto">Socios</a>
+        <a href="/carga" class="navbar-brand mx-auto ">Provincias</a>
+        <a href="/generos" class="navbar-brand mx-auto ">Generos</a>
+        <a href="/categorias" class="navbar-brand mx-auto ">Categorias</a>
+        <a href="/nacionalidades" class="navbar-brand mx-auto ">Nacionalidades</a>
+        <a href="/autores" class="navbar-brand mx-auto ">Autores</a>
+    </nav>
+    <div class="m-lg-4 ">
+        <div class="row">
+            <div class="col-md-8 mt-1 text-center">
+                <table class="table table-striped">
+                    <tr>
+                        <th>ID</th>
+                        <th>ID SOCIO</th>
+                        <th>SOCIO</th>
+                        <th>TITULO</th>
+                        <th>EJEMPLAR</th>
+                        <th>OBSERVACION</th>
+                        <th>EXTENSION 1</th>
+                        <th>FECHA RETIRO</th>
+                        <th>FECHA ENTREGA</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <% for(var i=0; i< prestamos.length; i++) { %>
+                    <tr>
+                        <td><%= prestamos[i].id_prestamo %></td>
+                        <td><%= prestamos[i].id_socio %></td>
+                        <td><%= prestamos[i].nombre_socio + ' ' + prestamos[i].apellido_socio  %></td>
+                        <td><%= prestamos[i].titulo %></td>
+                        <td><%= prestamos[i].id_ejemplar %></td>
+                        <td><%= prestamos[i].observacion %></td>
+                        <td><%= prestamos[i].Extension1 %></td>
+                        <td><%= new Date(prestamos[i].fecha_retiro).toLocaleDateString(undefined, { day: 'numeric' ,  month: 'numeric', year: 'numeric' }) %></td>
+                        <% if ( prestamos[i].fecha_entrega != null ) 
+                        {
+                            %>
+                        <td><%= new Date(prestamos[i].fecha_entrega).toLocaleDateString(undefined, { day: 'numeric' ,  month: 'numeric', year: 'numeric' }) %></td>
+                        <% } else {
+                            %>
+                            <td>No Entregado</td>
+                            <% } %>
+                        <td><a href="/terminar_prestamo/<%= prestamos[i].id_prestamo %>" class="btn btn-danger">Finalizar</a></td>
+                        <td><a href="/extender_prestamo/<%= prestamos[i].id_prestamo %>" class="btn btn-info">Extender</a></td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+            <div class="col-md-4 mt-1 m-lg-auto card">
+                <form action="/alta_prestamo" method="post" class="card-body">
+                    <h3 class="card-title">Alta Prestamo</h3>
+                    <div>
+                        <label for="socioId">Socio:</label>
+                        <select name="socioId">
+                            <% socios.forEach(socios=> { %>
+                                <option value="<%= socios.id_socio %>"><%= socios.nombre + ' ' + socios.apellido %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="libroId">Libro:</label>
+                        <select name="libroId">
+                            <% libros.forEach(libros=> { %>
+                                <option value="<%= libros.id_libro %>"><%= libros.titulo %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="ejemplarId">Ejemplar:</label>
+                        <select name="ejemplarId">
+                            <% ejemplares.forEach(ejemplares=> { %>
+                                <option value="<%= ejemplares.id_ejemplar %>"><%= 'Id: ' + ejemplares.id_ejemplar + ' | Obs: ' + ejemplares.observacion  %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-primary my-1" value="Alta Prestamo">
+                </form>
+            </div>
+ <div>           
+</div>          
+        
+
+</div>
+</div>
+
+
+</body>
+
+
+</html>
