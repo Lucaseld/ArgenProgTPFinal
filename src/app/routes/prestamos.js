@@ -21,7 +21,7 @@ module.exports = app=>{
             const sociosResult = await queryDatabase(sociosQuery);
             
             // Consulta para obtener las categorias
-            const ejemplaresQuery = 'SELECT e.* FROM ejemplares e, prestamos p where e.id_ejemplar = p.id_ejemplar and p.fecha_entrega is not null ';
+            const ejemplaresQuery = 'SELECT e.* FROM ejemplares e left join prestamos p on( p.id_ejemplar=e.id_ejemplar)  where  p.estado = 1 group by id_ejemplar';
             const ejemplaresResult = await queryDatabase(ejemplaresQuery);
 
     
@@ -73,7 +73,7 @@ module.exports = app=>{
         const id = req.params.id;
         const fecha_entrega = new Date(Date.now());
         
-        const query = 'update prestamos set fecha_entrega = ? where id_prestamo = ?';
+        const query = 'update prestamos set fecha_entrega = ? , estado = 1 where id_prestamo = ?';
         conexion.query(query,[fecha_entrega,id],(err,result)=>{
             if(err){
                 console.log('Error al modificar el registro ');
