@@ -21,7 +21,7 @@ module.exports = app=>{
             const sociosResult = await queryDatabase(sociosQuery);
             
             // Consulta para obtener las categorias
-            const ejemplaresQuery = 'SELECT * FROM ejemplares e where not exists (select 1 from prestamos p where e.id_ejemplar = p.id_ejemplar and p.estado=0)';
+            const ejemplaresQuery = 'SELECT * FROM ejemplares e where not exists (select 1 from prestamos p where e.id_ejemplar = p.id_ejemplar and p.estado!=1)';
             const ejemplaresResult = await queryDatabase(ejemplaresQuery);
 
     
@@ -51,11 +51,13 @@ module.exports = app=>{
         const id_ejemplar = req.body.ejemplarId;
         const id_socio = req.body.socioId;
         const fecha_retiro = new Date(Date.now());
+        const estado = 0;
         conexion.query('INSERT INTO prestamos SET ?',{
             id_libro,
             id_ejemplar,
             id_socio,
-            fecha_retiro
+            fecha_retiro,
+            estado
         },(err,result)=>{
             console.log(id_libro);
             console.log(id_ejemplar);
