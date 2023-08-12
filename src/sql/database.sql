@@ -11,7 +11,7 @@ CREATE TABLE libros(
     id_edicion INT,
     id_genero INT,
     id_subgenero int,
-    id_formato INT,
+    id_formato INT
 );
 CREATE TABLE ejemplares (
     id_ejemplar INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
