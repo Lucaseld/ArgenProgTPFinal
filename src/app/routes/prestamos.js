@@ -21,7 +21,7 @@ module.exports = app=>{
             const sociosResult = await queryDatabase(sociosQuery);
             
             // Consulta para obtener las categorias
-            const ejemplaresQuery = 'SELECT * FROM ejemplares e where not exists (select 1 from prestamos p where e.id_ejemplar = p.id_ejemplar and p.estado!=1)';
+            const ejemplaresQuery = 'SELECT * FROM ejemplares e where not exists (select 1 from prestamos p where e.id_ejemplar = p.id_ejemplar and (p.estado!=1 or estado is null))';
             const ejemplaresResult = await queryDatabase(ejemplaresQuery);
 
     
