@@ -59,7 +59,8 @@ CREATE TABLE prestamos(
     fecha_entrega DATE,
     Extension1 INT,
     Extension2 INT,
-    Extension3 INT
+    Extension3 INT,
+    estado INT
 );
 CREATE TABLE cargos_empleados (
     id_cargo INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
