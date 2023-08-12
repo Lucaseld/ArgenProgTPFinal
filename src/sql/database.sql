@@ -154,11 +154,11 @@ insert into socios (nombre, apellido, fecha_nacimiento, id_genero, dni, direccio
 insert into socios ( nombre, apellido, fecha_nacimiento, id_genero, dni, direccion, localidad, id_provincia, telefono, email, fecha_alta, id_categoria) values ('Manuel', 'Constenla', '1998-06-09', '3', '123123', 'Marengo', 'San Andres', '5', '12312', 'manuel@contenla.com', '2023-08-11', '7');
 insert into socios (nombre, apellido, fecha_nacimiento, id_genero, dni, direccion, localidad, id_provincia, telefono, email, fecha_alta, id_categoria) values ('Lucas', 'Liotta Dobal', '2023-08-11', '2', '', 'La Crujia 3322', 'Gral San Martin', '5', '01121800293', 'lucaseld1108@gmail.com', '2023-08-11', '6');
 
-insert into prestamos (id_libro, id_ejemplar, id_socio, fecha_retiro, fecha_entrega, Extension1, Extension2, Extension3) values ( '1', '4', '1', '2023-08-11', '2023-08-11', '5', NULL, NULL);
-insert into prestamos (id_libro, id_ejemplar, id_socio, fecha_retiro, fecha_entrega, Extension1, Extension2, Extension3) values ( '1', '2', '2', '2023-08-11', NULL, '5', NULL, NULL);
-insert into prestamos (id_libro, id_ejemplar, id_socio, fecha_retiro, fecha_entrega, Extension1, Extension2, Extension3) values ( '1', '1', '1', '2023-08-11', '2023-08-11', NULL, NULL, NULL);
-insert into prestamos (id_libro, id_ejemplar, id_socio, fecha_retiro, fecha_entrega, Extension1, Extension2, Extension3) values ( '2', '2', '3', '2023-08-11', NULL, NULL, NULL, NULL);
-insert into prestamos (id_libro, id_ejemplar, id_socio, fecha_retiro, fecha_entrega, Extension1, Extension2, Extension3) values ( '1', '1', '3', '2023-08-11', NULL, NULL, NULL, NULL);
+insert into prestamos (id_libro, id_ejemplar, id_socio, fecha_retiro, fecha_entrega, Extension1, Extension2, Extension3,estado) values ( '1', '4', '1', '2023-08-01', '2023-08-11', '5', NULL, NULL,'1');
+insert into prestamos (id_libro, id_ejemplar, id_socio, fecha_retiro, fecha_entrega, Extension1, Extension2, Extension3,estado) values ( '1', '4', '2', '2023-08-11', NULL, '5', NULL, NULL,'0');
+insert into prestamos (id_libro, id_ejemplar, id_socio, fecha_retiro, fecha_entrega, Extension1, Extension2, Extension3,estado) values ( '1', '1', '1', '2023-08-01', '2023-08-11', NULL, NULL, NULL,'1');
+insert into prestamos (id_libro, id_ejemplar, id_socio, fecha_retiro, fecha_entrega, Extension1, Extension2, Extension3,estado) values ( '2', '2', '3', '2023-08-11', NULL, NULL, NULL, NULL,'0');
+insert into prestamos (id_libro, id_ejemplar, id_socio, fecha_retiro, fecha_entrega, Extension1, Extension2, Extension3,estado) values ( '1', '3', '3', '2023-08-11', NULL, NULL, NULL, NULL,'0');
 
 
 insert into autores (nombre, apellido, id_nacionalidad) values ( 'Autor', 'Prueba', '1');
