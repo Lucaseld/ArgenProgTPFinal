@@ -8,7 +8,7 @@ module.exports = app=>{
     app.get('/prestamos', async (req, res) => {
         try {
             // Consulta para obtener los socios
-            const prestamosQuery = 'SELECT p.*, l.titulo , e.observacion, s.nombre as nombre_socio , s.apellido as apellido_socio FROM PRESTAMOS P LEFT JOIN libros l on (p.id_libro = l.id_libro)  LEFT JOIN ejemplares e on (p.id_ejemplar = e.id_ejemplar) left join socios s on (p.id_socio = s.id_socio)';
+            const prestamosQuery = 'SELECT p.*, l.titulo , e.observacion, s.nombre as nombre_socio , s.apellido as apellido_socio FROM prestamos p LEFT JOIN libros l on (p.id_libro = l.id_libro)  LEFT JOIN ejemplares e on (p.id_ejemplar = e.id_ejemplar) left join socios s on (p.id_socio = s.id_socio)';
             const prestamosResult = await queryDatabase(prestamosQuery);
 
             
